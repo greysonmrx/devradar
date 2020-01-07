@@ -5,7 +5,7 @@ const Dev = require("../models/Dev");
 class DevController {
   async store(request, response) {
     try {
-      const { github_username, techs } = request.body;
+      const { github_username, techs, latitude, longitude } = request.body;
 
       const devExists = await Dev.findOne({ github_username });
 
@@ -18,12 +18,18 @@ class DevController {
 
         const techsArray = techs.split(",").map((tech) => tech.trim());
 
+        const location = {
+          type: "Point",
+          coordinates: [longitude, latitude],
+        };
+
         const dev = await Dev.create({
           github_username,
           name,
           avatar_url,
           bio,
           techs: techsArray,
+          location,
         });
 
         return response.status(200).json(dev);
