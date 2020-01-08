@@ -3,6 +3,18 @@ const axios = require("axios");
 const Dev = require("../models/Dev");
 
 class DevController {
+  async index(request, response) {
+    try {
+      const devs = await Dev.find();
+
+      return response.status(200).json(devs);
+    } catch (err) {
+      return response.status(400).json({
+        message: "Operação indisponível",
+      });
+    }
+  }
+
   async store(request, response) {
     try {
       const { github_username, techs, latitude, longitude } = request.body;
@@ -37,7 +49,6 @@ class DevController {
 
       return response.status(200).json(devExists);
     } catch (err) {
-      console.log(err);
       return response.status(400).json({
         message: "Operação indisponível",
       });
