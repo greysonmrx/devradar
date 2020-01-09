@@ -1,6 +1,7 @@
 const axios = require("axios");
 
 const Dev = require("../models/Dev");
+const parseStringAsArray = require("../utils/parseStringAsArray");
 
 class DevController {
   async index(request, response) {
@@ -28,7 +29,7 @@ class DevController {
 
         const { name = login, avatar_url, bio } = githubResponse.data;
 
-        const techsArray = techs.split(",").map((tech) => tech.trim());
+        const techsArray = parseStringAsArray(techs);
 
         const location = {
           type: "Point",
