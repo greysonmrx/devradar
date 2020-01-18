@@ -6,6 +6,7 @@ import "./Sidebar.css";
 import "./App.css";
 
 import DevForm from "./components/DevForm";
+import DevItem from "./components/DevItem";
 
 function App() {
   const [devs, setDevs] = useState([]);
@@ -30,7 +31,13 @@ function App() {
         <strong>Cadastrar</strong>
         <DevForm onSubmit={handleAddDev} />
       </aside>
-      <main></main>
+      <main>
+        <ul>
+          {devs.map((dev) => (
+            <DevItem key={dev._id} dev={dev} />
+          ))}
+        </ul>
+      </main>
     </div>
   );
 }
