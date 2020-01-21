@@ -4,6 +4,7 @@ import api from "./services/api";
 import "./global.css";
 import "./Sidebar.css";
 import "./App.css";
+import "./Main.css";
 
 import DevForm from "./components/DevForm";
 import DevItem from "./components/DevItem";
