@@ -11,9 +11,17 @@ const RootStack = createStackNavigator();
 export default function Routes() {
   return (
     <NavigationContainer ref={setNavigator}>
-      <RootStack.Navigator>
+      <RootStack.Navigator screenOptions={screenOptions}>
         <RootStack.Screen name="DevRadar" component={Main} />
       </RootStack.Navigator>
     </NavigationContainer>
   );
 }
+
+const screenOptions = {
+  headerStyle: {
+    backgroundColor: "#7D40E7",
+  },
+  headerTitleAlign: "center",
+  headerTintColor: "#ffffff",
+};
