@@ -13,10 +13,13 @@ import {
   getCurrentPositionAsync,
 } from "expo-location";
 import { MaterialIcons } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
 
 import api from "../services/api";
 
 function Main() {
+  const navigation = useNavigation();
+
   const [devs, setDevs] = useState([]);
   const [currentRegion, setCurrentRegion] = useState(null);
   const [techs, setTechs] = useState("");
@@ -83,7 +86,13 @@ function Main() {
           >
             <Image style={styles.avatar} source={{ uri: dev.avatar_url }} />
 
-            <Callout onPress={() => {}}>
+            <Callout
+              onPress={() =>
+                navigation.navigate("Profile", {
+                  github_username: dev.github_username,
+                })
+              }
+            >
               <View style={styles.callout}>
                 <Text style={styles.devName}>{dev.name}</Text>
                 <Text style={styles.devBio}>{dev.bio}</Text>

@@ -5,6 +5,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { setNavigator } from "./services/navigate";
 
 import Main from "./pages/Main";
+import Profile from "./pages/Profile";
 
 const RootStack = createStackNavigator();
 
@@ -13,6 +14,11 @@ export default function Routes() {
     <NavigationContainer ref={setNavigator}>
       <RootStack.Navigator screenOptions={screenOptions}>
         <RootStack.Screen name="DevRadar" component={Main} />
+        <RootStack.Screen
+          name="Profile"
+          options={{ headerTitle: "Perfil" }}
+          component={Profile}
+        />
       </RootStack.Navigator>
     </NavigationContainer>
   );
